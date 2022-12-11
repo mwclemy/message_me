@@ -17,7 +17,12 @@
 //= require_tree .
 // Loads all Semantic javascripts
 //= require semantic-ui
-
+const scrollDown = function () {
+    const messagesElem = $('#messages')
+    if (messagesElem.length > 0) {
+        messagesElem.scrollTop(messagesElem[0].scrollHeight)
+    }
+}
 $(document).on('turbolinks:load', function () {
     $('.ui.dropdown').dropdown();
     $('.message .close')
@@ -26,4 +31,6 @@ $(document).on('turbolinks:load', function () {
                 .closest('.message')
                 .transition('fade');
         });
+
+    scrollDown()
 })
