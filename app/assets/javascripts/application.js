@@ -23,6 +23,15 @@ const scrollDown = function () {
         messagesElem.scrollTop(messagesElem[0].scrollHeight)
     }
 }
+
+const handleMessageSubmit = function () {
+    $('#message_body').on('keydown', function (e) {
+        if (e.keyCode == 13) {
+            $('button').click()
+            e.target.value = ""
+        }
+    })
+}
 $(document).on('turbolinks:load', function () {
     $('.ui.dropdown').dropdown();
     $('.message .close')
@@ -32,5 +41,6 @@ $(document).on('turbolinks:load', function () {
                 .transition('fade');
         });
 
+    handleMessageSubmit()
     scrollDown()
 })
